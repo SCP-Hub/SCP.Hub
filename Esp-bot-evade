@@ -1,0 +1,73 @@
+local debug = true
+
+function CheckIfNextbot(Model)
+    if Model:FindFirstChild("HRP") then
+        return true
+    end
+
+    return false
+end
+
+function NextbotESP(Model)
+    local billboardGUI = Instance.new("BillboardGui", Model)
+    billboardGUI.Name = "Evade Nextbot ESP"
+    billboardGUI.Size = UDim2.new(7, 0, 7, 0)
+    billboardGUI.AlwaysOnTop = true
+    billboardGUI.MaxDistance = 500
+    local frame = Instance.new("Frame", billboardGUI)
+    frame.Size = UDim2.new(1, 0, 1, 0)
+    frame.BackgroundTransparency = 0
+    frame.BorderSizePixel = 5
+    frame.BorderColor3 = Color3.new(0.066666, 0.019607, 0.019607)
+    frame.BackgroundColor3 = Color3.new(0.172549, 0.058823, 0.058823)
+    local label = Instance.new("TextLabel", frame)
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.BorderSizePixel = 0
+    label.TextSize = UDim2.new(1, 0, 1, 0)
+    label.Text = Model.Name
+    label.TextScaled = true
+    label.TextColor3 = Color3.new(0.933333, 0.619607, 0.619607)
+    label.BackgroundTransparency = 1
+end
+
+function Main()
+    for __, v in pairs(game.Workspace.Game.Players:GetDescendants()) do
+        if v:IsA("Model") then
+            if v:FindFirstChild("Evade Nextbot ESP") then
+                if debug then
+                    print("Evade Nextbot ESP already exists in " .. v.Name .. "!")
+                end
+            else
+                if CheckIfNextbot(v) then
+                    NextbotESP(v)
+                    if debug then
+                        print("Added Evade Nextbot ESP to " .. v.Name .. "!")
+                    end
+                end
+            end
+        end
+    end
+end
+
+Main()
+
+game:GetService("StarterGui"):SetCore(
+    "SendNotification",
+    {
+        Title = "Evade Nextbot ESP loaded!",
+        Text = "Happy exploiting!",
+        Duration = 3
+    }
+)
+
+game.Workspace.Game.Players.ChildAdded:Connect(
+    function()
+        Main()
+    end
+)
+
+game.Workspace.Game.Players.ChildRemoved:Connect(
+    function()
+        Main()
+    end
+)
