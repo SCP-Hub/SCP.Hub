@@ -88,13 +88,7 @@ function Library:CreateWindow(GameName)
             MainHolder_1.Visible = false
             ToggleGUIHolder_1.Visible = true
         end
-
-local TCS = game:GetService("TextChatService")
-
-TCS.SendingMessage:Connect(function(Msg)
- (string.lower(Msg.Text)=='/hide')
-end
-)
+       )
 
 	TopBar_1.Name = "TopBar"
 	TopBar_1.Parent = MainHolder_1
@@ -695,6 +689,15 @@ end
 					end
 				end
 			)
+local TCS = game:GetService("TextChatService")
+
+TCS.SendingMessage:Connect(function(Msg)
+ (string.lower(Msg.Text)=='/hide')
+MainHolder_1.Visible = false
+            ToggleGUIHolder_1.Visible = true
+        end
+end
+)
 		end
 		return Elements
 	end
