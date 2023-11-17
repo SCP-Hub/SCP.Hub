@@ -33,7 +33,7 @@ function Library:CreateWindow(GameName)
 	local UIPadding_5 = Instance.new("UIPadding")
 	local UIListLayout_2 = Instance.new("UIListLayout")
 
-	ProjectOmega.Name = "ProjectOmega"
+	ProjectOmega.Name = "xyz"
 	ProjectOmega.Parent = game.CoreGui
 	ProjectOmega.Enabled = true
 	ProjectOmega.ResetOnSpawn = false
