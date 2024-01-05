@@ -1200,5 +1200,4 @@ More:AddToggle({
             clip()
         end
 	end    
-}
-end)
+})
